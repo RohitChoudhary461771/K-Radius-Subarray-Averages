@@ -1,0 +1,65 @@
+class Solution {
+public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+       //base case 
+       int n=nums.size();
+       vector<long>ans(n);
+       if(k==0)return nums;
+       if(k>n) {
+           vector<int>na(n,-1);
+           return na;
+       }
+       ans[0]=nums[0];
+       for(int i=1;i<n;i++){
+           ans[i]=nums[i]+ans[i-1];
+       } 
+    
+       for(int i=0;i<n;i++){
+           if(i>=k && i+k<n){
+               if((i+k)>=(2*k+1)){
+                   cout<<i<<"-"<<ans[i-k-1]<<" ";
+                   nums[i]=(ans[i+k]-ans[i-k-1])/(2*k+1);
+               }
+               else{
+                   nums[i]=ans[i+k]/(2*k+1);
+               }
+           }
+           else{
+               nums[i]=-1;
+           }
+       }
+       return nums;
+    }
+};class Solution {
+public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+       //base case 
+       int n=nums.size();
+       vector<long>ans(n);
+       if(k==0)return nums;
+       if(k>n) {
+           vector<int>na(n,-1);
+           return na;
+       }
+       ans[0]=nums[0];
+       for(int i=1;i<n;i++){
+           ans[i]=nums[i]+ans[i-1];
+       } 
+    
+       for(int i=0;i<n;i++){
+           if(i>=k && i+k<n){
+               if((i+k)>=(2*k+1)){
+                   cout<<i<<"-"<<ans[i-k-1]<<" ";
+                   nums[i]=(ans[i+k]-ans[i-k-1])/(2*k+1);
+               }
+               else{
+                   nums[i]=ans[i+k]/(2*k+1);
+               }
+           }
+           else{
+               nums[i]=-1;
+           }
+       }
+       return nums;
+    }
+};
